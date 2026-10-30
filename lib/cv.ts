@@ -29,7 +29,7 @@ export function cvMarkdown() {
   for (const p of caseStudies) {
     lines.push(`### ${p.title}`, p.description, "");
     if (!isTodo(p.role)) lines.push(`Role: ${p.role}`);
-    lines.push(`Stack: ${p.stack.join(", ")}`);
+    lines.push(`Task: ${p.task}`, `Stack: ${p.stack.join(", ")}`);
     lines.push(...p.links.map((l) => `- ${l.label}: ${l.href}`), "");
   }
   lines.push("Other projects:", ...moreProjects.map((p) => `- ${p.name}: ${p.href}`), "");

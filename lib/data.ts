@@ -90,7 +90,7 @@ export const focusAreas = [
 /** Headline numbers for the About section. */
 export const stats = [
   { value: "11th", label: "Zindi bootcamp ranking" },
-  { value: "7+", label: "Data & ML projects" },
+  { value: "8", label: "Data & ML projects" },
   { value: "3–5", label: "Students mentored" },
   { value: "6", label: "Programs & certificates" },
 ];
@@ -113,6 +113,15 @@ export type CaseStudy = {
   /** Screenshot; when missing a generated chart is shown instead. */
   image?: { src: string; width: number; height: number; alt: string };
   visual: Visual;
+  /** ML task type, e.g. "Binary classification". */
+  task: string;
+  dataset: string;
+  /** Stages drawn as a pipeline diagram on the case study. */
+  pipeline: string[];
+  /** Headline results. TODO values are hidden in production. */
+  metrics: { label: string; value: string }[];
+  /** Model card fields for the case study. */
+  model: { approach: string; evaluation: string; limitations: string };
   role: string;
   context: string;
   stack: string[];
@@ -138,6 +147,18 @@ export const caseStudies: CaseStudy[] = [
     description:
       "An NLP and retrieval-augmented generation system for financial services. Customer complaints are cleaned, classified and embedded into a vector database, so product and support teams can surface patterns and ask questions in natural language instead of reading complaints one by one.",
     visual: "network",
+    task: "Retrieval-augmented generation · text classification",
+    dataset: "Financial-services customer complaints (free text)",
+    pipeline: ["Complaint text", "Clean & chunk", "Embeddings", "Vector store", "Retriever + LLM", "Chat UI"],
+    metrics: [
+      { label: "Complaints indexed", value: "TODO(mekhluqat): count" },
+      { label: "Retrieval quality", value: "TODO(mekhluqat): e.g. hit rate @5" },
+    ],
+    model: {
+      approach: "Semantic search over embedded complaint chunks, with retrieved context passed to an LLM to answer questions in plain English.",
+      evaluation: "TODO(mekhluqat): how answers were evaluated (manual review table, RAGAS, …).",
+      limitations: "Answers are only as good as retrieval; questions outside the complaint data can't be answered reliably.",
+    },
     role: "Data Science Trainee (individual project)",
     context: "10x Academy · KAIM",
     stack: ["Python", "Pandas", "Gradio", "Streamlit"],
@@ -163,6 +184,18 @@ export const caseStudies: CaseStudy[] = [
     description:
       "A credit-scoring model that estimates the probability that a customer will default on a loan, built from customer financial and demographic data with careful cleaning, feature engineering and model comparison.",
     visual: "bars",
+    task: "Binary classification · probability of default",
+    dataset: "Customer financial & demographic records",
+    pipeline: ["Raw records", "Cleaning", "Feature engineering", "Model training", "Evaluation", "Risk score"],
+    metrics: [
+      { label: "ROC-AUC", value: "TODO(mekhluqat): score" },
+      { label: "Best model", value: "TODO(mekhluqat): e.g. Gradient Boosting" },
+    ],
+    model: {
+      approach: "Supervised classifiers trained on engineered features, outputting a calibrated probability of default rather than a hard label.",
+      evaluation: "TODO(mekhluqat): metrics and validation strategy (train/test split, cross-validation).",
+      limitations: "Credit models can encode historical bias; features and outcomes need fairness checks before real lending decisions.",
+    },
     role: "Data Science Trainee (individual project)",
     context: "10x Academy · KAIM",
     stack: ["Python", "Pandas", "NumPy", "Scikit-learn"],
@@ -187,6 +220,18 @@ export const caseStudies: CaseStudy[] = [
     description:
       "A fraud-detection project covering both e-commerce and bank transaction data, using Python and machine-learning techniques to separate fraudulent activity from the overwhelming majority of legitimate transactions.",
     visual: "scatter",
+    task: "Imbalanced binary classification",
+    dataset: "E-commerce & bank card transactions",
+    pipeline: ["Transactions", "EDA", "Feature engineering", "Imbalance handling", "Classifiers", "Evaluation"],
+    metrics: [
+      { label: "PR-AUC", value: "TODO(mekhluqat): score" },
+      { label: "Recall on fraud", value: "TODO(mekhluqat): score" },
+    ],
+    model: {
+      approach: "Classifiers trained on engineered transaction features, with the class imbalance handled explicitly and precision/recall traded off for the business cost of errors.",
+      evaluation: "TODO(mekhluqat): metrics used (PR-AUC, F1, confusion matrix) and results.",
+      limitations: "Fraud patterns drift over time, so a deployed model would need monitoring and regular retraining.",
+    },
     role: "Data Science Trainee (individual project)",
     context: "10x Academy · KAIM",
     stack: ["Python", "Pandas", "Scikit-learn", "Jupyter"],
@@ -205,12 +250,52 @@ export const caseStudies: CaseStudy[] = [
     },
   },
   {
+    slug: "price-prediction",
+    title: "Price Prediction",
+    summary: "Links financial news sentiment and technical indicators to stock price movements.",
+    description:
+      "An analysis of how financial news relates to stock price movements. News headlines are scored for sentiment and combined with technical indicators computed from price history, to test whether sentiment carries a predictive signal.",
+    visual: "line",
+    task: "Sentiment analysis · time-series features",
+    dataset: "Financial news headlines & daily stock prices",
+    pipeline: ["News + prices", "Sentiment scoring", "Technical indicators", "Date alignment", "Correlation & modelling"],
+    metrics: [{ label: "Sentiment–return correlation", value: "TODO(mekhluqat): value" }],
+    model: {
+      approach: "Headline sentiment scores aligned to trading days and analysed alongside technical indicators such as moving averages and RSI.",
+      evaluation: "TODO(mekhluqat): correlation results or model metrics.",
+      limitations: "Correlation is not causation, and markets react to far more than headlines.",
+    },
+    role: "Data Science Trainee (individual project)",
+    context: "10x Academy · KAIM",
+    stack: ["Python", "Pandas", "NumPy", "Jupyter"],
+    links: [{ label: "Source", href: GITHUB, kind: "code" }],
+    sections: {
+      problem: ["Can the tone of financial news help explain, or anticipate, how a stock's price moves?"],
+      role: ["Owned the analysis end to end: data collection, sentiment scoring, indicators and findings."],
+      architecture: [
+        "Sentiment scores computed for each headline, aggregated per day and aligned with price data; technical indicators calculated from the price series.",
+        "TODO(mekhluqat): sentiment library (TextBlob, VADER, FinBERT?) and indicator library (TA-Lib, pandas-ta?).",
+      ],
+      challenges: ["TODO(mekhluqat): e.g. aligning news timestamps with trading days."],
+      outcome: ["TODO(mekhluqat): what you found."],
+    },
+  },
+  {
     slug: "smart-women-safety-system",
     title: "Smart Women Safety System",
     summary: "A Flask-based AI backend that powers real-time safety alerts from IoT sensors.",
     description:
       "A safety system that pairs wearable IoT sensors with an AI backend. The Flask service receives sensor events, decides when a situation looks dangerous, and triggers real-time alerts.",
     visual: "map",
+    task: "Real-time event detection",
+    dataset: "Streaming IoT sensor readings",
+    pipeline: ["IoT sensors", "Flask API", "Detection logic", "Real-time alert"],
+    metrics: [{ label: "Alert latency", value: "TODO(mekhluqat): seconds" }],
+    model: {
+      approach: "A Flask service receives sensor events and decides when a reading pattern looks dangerous, then dispatches an alert.",
+      evaluation: "TODO(mekhluqat): how the detection was tested.",
+      limitations: "False alarms and missed events both carry real cost; thresholds need testing with real-world data.",
+    },
     role: "Backend & AI developer (team of 2)",
     context: "Team project",
     stack: ["Python", "Flask"],
@@ -233,7 +318,6 @@ export const caseStudies: CaseStudy[] = [
 export type MiniProject = { name: string; blurb: string; href: string };
 
 export const moreProjects: MiniProject[] = [
-  { name: "Price Prediction", blurb: "Stock moves from news sentiment and technical indicators.", href: GITHUB },
   { name: "Customer Experience Analysis", blurb: "Google Play reviews of Ethiopian fintech apps.", href: GITHUB },
   { name: "Chicago Crime Analysis", blurb: "Forecasting crime type and location from public data.", href: GITHUB },
   { name: "Solar Energy Dashboard", blurb: "Streamlit dashboard for solar irradiance data.", href: GITHUB },

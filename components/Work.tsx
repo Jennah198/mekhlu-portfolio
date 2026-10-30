@@ -7,6 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { GithubIcon } from "@/components/icons";
 import { StackPill } from "@/components/StackPill";
 import { ProjectVisual } from "@/components/ProjectVisual";
+import { Metrics } from "@/components/MLPipeline";
 
 export default function Work() {
   return (
@@ -17,7 +18,7 @@ export default function Work() {
         eyebrow="Work"
         title={
           <>
-            Data that <em className="text-accent-text">answers questions</em>
+            Machine learning, <em className="text-accent-text">end to end</em>
           </>
         }
       />
@@ -60,7 +61,8 @@ export default function Work() {
                 <dl className="mt-6 grid gap-4 border-t border-border pt-5 text-[15px] leading-relaxed">
                   {[
                     ["The problem", p.sections.problem.find((t) => !isTodo(t))],
-                    ["How it's built", p.sections.architecture.find((t) => !isTodo(t))],
+                    ["ML task", p.task],
+                    ["Data", p.dataset],
                   ].map(
                     ([label, text]) =>
                       text && (
@@ -72,7 +74,7 @@ export default function Work() {
                   )}
                 </dl>
 
-
+                <Metrics metrics={p.metrics} className="mt-5" />
                 <div className="relative z-10 mt-auto flex flex-wrap items-center gap-x-5 gap-y-3 pt-7">
                   <Link
                     href={`/work/${p.slug}`}

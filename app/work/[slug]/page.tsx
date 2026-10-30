@@ -9,6 +9,7 @@ import { TodoNote, showTodos } from "@/components/TodoNote";
 import { caseStudies, isTodo, site } from "@/lib/data";
 import { StackPill, TechChips } from "@/components/StackPill";
 import { ProjectVisual } from "@/components/ProjectVisual";
+import { MLPipeline, Metrics } from "@/components/MLPipeline";
 
 export function generateStaticParams() {
   return caseStudies.map((c) => ({ slug: c.slug }));
@@ -57,6 +58,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
           </p>
           <h1 className="mt-4 font-serif text-display tracking-[-0.02em]">{study.title}</h1>
           <p className="mt-6 max-w-2xl text-lead text-muted-foreground">{study.summary}</p>
+          <Metrics metrics={study.metrics} className="mt-8" />
 
           <dl className="mt-10 grid gap-6 border-y border-border py-6 text-sm sm:grid-cols-3">
             {(showTodos || !isTodo(study.role)) && (
@@ -112,6 +114,37 @@ export default async function CaseStudyPage({ params }: PageProps<"/work/[slug]"
             <section aria-labelledby="overview">
               <h2 id="overview" className="font-serif text-h3">Overview</h2>
               <p className="mt-4 text-lead text-muted-foreground">{study.description}</p>
+            </section>
+
+            <section aria-labelledby="ch-pipeline">
+              <h2 id="ch-pipeline" className="font-serif text-h3">Pipeline</h2>
+              <div className="mt-5">
+                <MLPipeline stages={study.pipeline} />
+              </div>
+            </section>
+
+            <section aria-labelledby="ch-model-card">
+              <h2 id="ch-model-card" className="font-serif text-h3">Model card</h2>
+              <dl className="mt-5 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card/70">
+                {(
+                  [
+                    ["Task", study.task],
+                    ["Data", study.dataset],
+                    ["Approach", study.model.approach],
+                    ["Evaluation", study.model.evaluation],
+                    ["Limitations", study.model.limitations],
+                  ] as const
+                )
+                  .filter(([, value]) => showTodos || !isTodo(value))
+                  .map(([label, value]) => (
+                    <div key={label} className="grid gap-1 px-5 py-4 sm:grid-cols-4 sm:gap-6">
+                      <dt className="font-mono text-xs uppercase tracking-wider text-accent-text">{label}</dt>
+                      <dd className="text-[15px] leading-relaxed text-foreground/85 sm:col-span-3">
+                        {isTodo(value) ? <TodoNote text={value} /> : value}
+                      </dd>
+                    </div>
+                  ))}
+              </dl>
             </section>
 
             {chapters.map(({ key, title }) => {

@@ -401,27 +401,27 @@ export const experience: Experience[] = [
 
 export const workProcess = [
   {
-    title: "Frame the question",
-    body: "Pin down the decision the analysis has to support before touching the data.",
+    title: "Frame the problem",
+    body: "Start from the decision the model supports, then pick a metric that reflects the real cost of being wrong.",
   },
   {
-    title: "Clean & explore",
-    body: "Pandas and Jupyter to clean, profile and visualize until the data's story is clear.",
+    title: "Data first",
+    body: "Clean, profile and visualize before modelling. Most of the gains, and most of the bugs, live in the data.",
   },
   {
-    title: "Model & evaluate",
-    body: "Engineer features, compare models in Scikit-learn and pick metrics that match the real cost of errors.",
+    title: "Model & evaluate honestly",
+    body: "Strong baselines, careful validation and error analysis, compared on held-out data rather than a lucky split.",
   },
   {
-    title: "Ship & explain",
-    body: "Put results in people's hands with Streamlit dashboards, Gradio apps or a chat interface.",
+    title: "Ship & iterate",
+    body: "Put the model behind a dashboard, API or chat UI, with version control and CI so it can keep improving.",
   },
 ];
 
 export const faq = [
   {
     q: "Are you available?",
-    a: "Yes. I'm open to data science and machine learning internships and collaborations.",
+    a: "Yes. I'm open to Data Scientist, ML Engineer and AI Engineer roles, internships and collaborations.",
     todo: "TODO(mekhluqat): internship, part-time or full-time? Remote or on-site?",
   },
   {
@@ -429,8 +429,12 @@ export const faq = [
     a: "Ethiopia, GMT+3 (no daylight saving). My working day overlaps the full European working day.",
   },
   {
+    q: "Data scientist or ML engineer?",
+    a: "Both. I'm strongest where they meet: taking a problem from analysis and modelling through to a deployed, usable application.",
+  },
+  {
     q: "What's your strongest stack?",
-    a: "Python for data: Pandas, NumPy and Scikit-learn for analysis and modelling, Streamlit and Gradio for shipping, plus full-stack experience with Django, Flask, Next.js and Odoo.",
+    a: "Python: Pandas, NumPy and Scikit-learn for analysis and modelling; RAG with embeddings and vector databases for NLP; Streamlit, Gradio, Flask and Docker for shipping.",
   },
   {
     q: "Have you built anything with LLMs?",
@@ -444,7 +448,7 @@ export const faq = [
 
 export type Skill = {
   name: string;
-  /** File in /public/icons. Without one, a monogram is drawn. */
+  /** File in /public/icons. Without one (concepts like "RAG"), a dot is drawn. */
   icon?: string;
   /** Monochrome icon that needs inverting in dark mode. */
   mono?: boolean;
@@ -452,57 +456,78 @@ export type Skill = {
 
 export const skillGroups: { title: string; skills: Skill[] }[] = [
   {
-    title: "Languages",
+    title: "Data wrangling & analysis",
     skills: [
       { name: "Python", icon: "python" },
       { name: "SQL", icon: "mysql" },
-      { name: "Java", icon: "openjdk" },
-      { name: "C++", icon: "cplusplus" },
+      { name: "Pandas", icon: "pandas", mono: true },
+      { name: "NumPy", icon: "numpy" },
+      { name: "Jupyter", icon: "jupyter" },
+      { name: "EDA" },
+    ],
+  },
+  {
+    title: "Machine learning",
+    skills: [
+      { name: "Scikit-learn", icon: "scikitlearn" },
+      { name: "Classification" },
+      { name: "Regression" },
+      { name: "Feature engineering" },
+      { name: "Model evaluation" },
+      { name: "Imbalanced data" },
+    ],
+  },
+  {
+    title: "NLP & LLMs",
+    skills: [
+      { name: "RAG" },
+      { name: "Embeddings" },
+      { name: "Vector DBs" },
+      { name: "Text classification" },
+      { name: "Sentiment analysis" },
+    ],
+  },
+  {
+    title: "Deployment & MLOps",
+    skills: [
+      { name: "Streamlit", icon: "streamlit" },
+      { name: "Gradio" },
+      { name: "Flask", icon: "flask", mono: true },
+      { name: "Docker", icon: "docker" },
+      { name: "Git", icon: "git" },
+      { name: "GitHub", icon: "github", mono: true },
+      { name: "CI/CD" },
+    ],
+  },
+  {
+    title: "Software engineering",
+    skills: [
+      { name: "Django", icon: "django" },
+      { name: "Next.js", icon: "nextjs", mono: true },
+      { name: "Odoo", icon: "odoo", mono: true },
       { name: "JavaScript", icon: "javascript" },
       { name: "TypeScript", icon: "typescript" },
       { name: "HTML", icon: "html5" },
       { name: "CSS", icon: "css" },
+    ],
+  },
+  {
+    title: "CS foundations",
+    skills: [
+      { name: "Java", icon: "openjdk" },
+      { name: "C++", icon: "cplusplus" },
       { name: "Prolog" },
       { name: "Assembly" },
     ],
   },
-  {
-    title: "Data & ML",
-    skills: [
-      { name: "Pandas", icon: "pandas", mono: true },
-      { name: "NumPy", icon: "numpy" },
-      { name: "Scikit-learn", icon: "scikitlearn" },
-      { name: "Jupyter", icon: "jupyter" },
-    ],
-  },
-  {
-    title: "AI & NLP",
-    skills: [{ name: "RAG" }, { name: "Embeddings" }, { name: "Vector DBs" }, { name: "NLP" }],
-  },
-  {
-    title: "Apps & dashboards",
-    skills: [
-      { name: "Streamlit", icon: "streamlit" },
-      { name: "Gradio" },
-    ],
-  },
-  {
-    title: "Web & backend",
-    skills: [
-      { name: "Django", icon: "django" },
-      { name: "Flask", icon: "flask", mono: true },
-      { name: "Next.js", icon: "nextjs", mono: true },
-      { name: "Odoo", icon: "odoo", mono: true },
-    ],
-  },
-  {
-    title: "Tools",
-    skills: [
-      { name: "Git", icon: "git" },
-      { name: "GitHub", icon: "github", mono: true },
-      { name: "Docker", icon: "docker" },
-    ],
-  },
+];
+
+/** What I'm learning right now, shown under Skills. */
+export const nowLearning = [
+  { title: "Generative AI", detail: "LLM applications and prompting · Udemy" },
+  { title: "Data Science", detail: "Advanced modelling · Udacity" },
+  { title: "Data Analytics", detail: "ALX × United Nations program" },
+  { title: "Mentoring", detail: "Running InsightHive for 3–5 students" },
 ];
 
 /* ------------------------------------------------------------------ */

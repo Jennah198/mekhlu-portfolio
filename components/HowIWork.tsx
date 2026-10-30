@@ -13,7 +13,7 @@ export default function HowIWork() {
         eyebrow="How I work"
         title={
           <>
-            From raw data <em className="text-accent-text">to a decision</em>.
+            How I approach an <em className="text-accent-text">ML problem</em>.
           </>
         }
       />

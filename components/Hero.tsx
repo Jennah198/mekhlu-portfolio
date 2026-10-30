@@ -11,7 +11,7 @@ const shortSchool = (school: string) => school.match(/\((.+)\)$/)?.[1] ?? school
 const heroFacts = [
   { label: "Latest role", value: `${latest.role}, ${latest.org}` },
   ...degrees.map((d, i) => ({ label: i === 0 ? "Studying" : "Also studying", value: `${d.degree}, ${shortSchool(d.school)}` })),
-  { label: "Competition", value: "11th place, CSEC ASTU × Zindi" },
+  { label: "Focus", value: "Predictive ML · NLP & RAG · MLOps" },
 ];
 
 // Tighten spacing on short screens so the highlights strip always stays on the first screen.
@@ -46,8 +46,8 @@ export default function Hero() {
           <p
             className={`mt-5 max-w-2xl font-serif text-[clamp(1.5rem,1.1rem+1.5vw,2.4rem)] leading-[1.15] text-muted-foreground sm:mt-7 ${SHORT}:mt-4`}
           >
-            I turn messy data into <em className="text-gradient pr-1">decisions</em>{" "}
-            <span className="text-foreground">people can use</span>.
+            I build <em className="text-gradient pr-1">machine learning</em> systems, from raw data{" "}
+            <span className="text-foreground">to deployed models</span>.
           </p>
 
           <div className={`mt-8 flex flex-wrap items-center gap-3 sm:mt-10 ${SHORT}:mt-6`}>

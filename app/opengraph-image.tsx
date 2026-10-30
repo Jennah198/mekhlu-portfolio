@@ -29,9 +29,8 @@ export default async function OpengraphImage() {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 124, lineHeight: 1 }}>{site.name}</div>
             <div style={{ display: "flex", gap: 13, fontSize: 46, marginTop: 24, color: "#3f4a47" }}>
-              <span>I turn messy data into</span>
-              <span style={{ fontStyle: "italic", color: "#0b7a64" }}>decisions</span>
-              <span>people can use.</span>
+              <span>Machine learning, from raw data to</span>
+              <span style={{ fontStyle: "italic", color: "#0b7a64" }}>deployed models</span>
             </div>
           </div>
           <div style={{ display: "flex", fontSize: 28, color: "#855600" }}>

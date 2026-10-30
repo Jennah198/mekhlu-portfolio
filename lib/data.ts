@@ -17,11 +17,11 @@ export const site = {
   firstName: "Mekhluqat",
   lastName: "Abdulwehab",
   initials: "MA",
-  role: "Data Science · Machine Learning",
-  title: "Mekhluqat Abdulwehab — Data Science & Machine Learning",
+  role: "Data Scientist · ML Engineer",
+  title: "Mekhluqat Abdulwehab — Data Scientist & ML Engineer",
   description:
-    "Mekhluqat Abdulwehab is a Computer Science and Engineering student in Ethiopia specializing in Data Science, building end-to-end machine learning pipelines, RAG chatbots and interactive dashboards with Python, Pandas, Scikit-learn and Streamlit.",
-  availability: "Open to data science internships",
+    "Mekhluqat Abdulwehab is a data scientist and machine learning engineer in Ethiopia who builds end-to-end ML systems: data pipelines, predictive models, NLP and RAG applications, deployed behind Streamlit, Gradio and Flask.",
+  availability: "Open to Data Science & ML roles",
   location: "Addis Ababa, Ethiopia",
   timeZone: "Africa/Addis_Ababa",
   timeZoneLabel: "GMT+3",
@@ -48,9 +48,9 @@ export const socials: Social[] = [
 
 export const about = {
   paragraphs: [
-    "I'm Mekhluqat, a 5th-year Computer Science and Engineering student at Adama Science and Technology University, specializing in Data Science. I like the whole path from a messy dataset to a model someone can actually use: cleaning, exploring, engineering features, modelling, and shipping it behind a dashboard or a chat interface.",
-    "Through 10x Academy's KAIM program (sponsored by Mastercard) I built end-to-end ML pipelines and deployed projects including a RAG-based financial chatbot and interactive Streamlit dashboards. Before that I picked up full-stack experience building an Event Management System at SSGI and an Odoo-based School Management System with my university team.",
-    "Today I also volunteer as a Data Science peer mentor, curating datasets and organizing learning resources on GitHub for students who are a few steps behind me on the same road.",
+    "I'm Mekhluqat, a data scientist and machine learning engineer. I work across the whole ML lifecycle: framing the problem, cleaning and exploring the data, engineering features, training and evaluating models, and deploying them where people can use them, whether that's a dashboard, an API or a chat interface.",
+    "Through 10x Academy's KAIM program (sponsored by Mastercard) I shipped production-style ML projects: credit-risk scoring, fraud detection, price prediction and a RAG-based financial chatbot, using Git, CI/CD and code review along the way. A full-stack background (an Event Management System at SSGI, an Odoo School Management System) means I can also build the software around a model, not just the notebook.",
+    "I'm finishing a B.Sc. in Computer Science and Engineering at ASTU, specializing in Data Science, and I volunteer as a peer mentor, curating datasets and learning resources for students starting out in the field.",
   ],
 };
 
@@ -61,6 +61,30 @@ export const highlights = [
   "Data Science peer mentor",
   "Full-stack intern at SSGI",
   "ALX × IBM SkillsBuild",
+];
+
+/** What I build: the problem spaces recruiters scan for first. */
+export const focusAreas = [
+  {
+    title: "Predictive modelling",
+    body: "Classification and regression for real decisions: credit risk, fraud, prices and crime patterns.",
+    tags: ["Scikit-learn", "Feature engineering", "Imbalanced data"],
+  },
+  {
+    title: "NLP & LLM applications",
+    body: "Retrieval-augmented generation, text classification and sentiment analysis over messy, real-world text.",
+    tags: ["RAG", "Embeddings", "Vector DBs"],
+  },
+  {
+    title: "ML pipelines & deployment",
+    body: "Reproducible pipelines from raw data to a served model, with Git, CI/CD and Docker.",
+    tags: ["Flask", "Docker", "CI/CD"],
+  },
+  {
+    title: "Analytics & data apps",
+    body: "EDA and interactive dashboards that let non-technical teams explore the results themselves.",
+    tags: ["Pandas", "Streamlit", "Gradio"],
+  },
 ];
 
 /** Headline numbers for the About section. */

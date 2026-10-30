@@ -1,8 +1,20 @@
 # Mekhluqat Abdulwehab — Portfolio
 
-Personal portfolio for Mekhluqat Abdulwehab (Data Science · Machine Learning), built with
+Personal portfolio for Mekhluqat Abdulwehab (Data Scientist · ML Engineer), built with
 Next.js 16, React 19, Tailwind CSS v4 and next-themes. The structure is adapted from
 [Jennah198/dev-portfolio](https://github.com/Jennah198/dev-portfolio), restyled with a teal / amber "data" palette.
+
+## How it's structured
+
+The site follows patterns common to strong data science / ML portfolios:
+
+- **Lead with what you build.** Four focus areas (predictive modelling, NLP & LLM apps, ML pipelines &
+  deployment, analytics & data apps) sit right under the bio.
+- **Projects as ML case studies.** Each one states its ML task, dataset and headline metrics on the card, and
+  its page has a pipeline diagram, a model card (approach, evaluation, limitations), problem, role,
+  decisions and outcome.
+- **Skills grouped by the ML lifecycle** rather than one flat list, plus a "Currently learning" block.
+- **Proof.** Competition ranking, certificates, source links and a plain-text CV at `/cv.md`.
 
 ## Run it
 
@@ -33,7 +45,8 @@ sitemap are all generated from it.
 | Repo link for each project | `GITHUB` constant, `caseStudies[].links`, `moreProjects[].href` |
 | Deployed domain | `site.url` |
 | Zindi competition year, SSGI internship dates and stack | `experience` |
-| Project details (models, metrics, results) | `caseStudies[].sections` (the TODO notes) |
+| Headline metrics (ROC-AUC, PR-AUC, …) | `caseStudies[].metrics`, hidden until filled in |
+| Model card evaluation, project details | `caseStudies[].model`, `caseStudies[].sections` (the TODO notes) |
 | Project screenshots | add to `/public`, set `caseStudies[].image` (a generated chart shows until then) |
 | Certificate scans | add to `/public`, set `certificates[].image` (a placeholder card shows until then) |
 | Hosted PDF résumé (optional) | `site.resumeUrl` (defaults to the generated `/cv.md`) |

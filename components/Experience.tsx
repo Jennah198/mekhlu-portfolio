@@ -12,7 +12,7 @@ export default function Experience() {
         eyebrow="Experience"
         title={
           <>
-            From notebooks to <em className="text-accent-text">deployed apps</em>.
+            From notebooks to <em className="text-accent-text">production</em>.
           </>
         }
       />

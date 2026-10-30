@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   applicationName: site.name,
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
-  keywords: [site.name, "Data Science", "Machine Learning", "Python", "Pandas", "Scikit-learn", "RAG", "Streamlit", "Ethiopia"],
+  keywords: [site.name, "Data Scientist", "Machine Learning Engineer", "ML Engineer", "AI Engineer", "Python", "Scikit-learn", "NLP", "RAG", "MLOps", "Ethiopia"],
   alternates: { canonical: "/" },
   openGraph: {
     type: "profile",
@@ -59,12 +59,12 @@ const jsonLd = {
   name: site.name,
   url: site.url,
   email: `mailto:${site.email}`,
-  jobTitle: "Data Science Student",
+  jobTitle: "Data Scientist & Machine Learning Engineer",
   description: site.description,
   address: { "@type": "PostalAddress", addressLocality: "Addis Ababa", addressCountry: "ET" },
   sameAs: socials.filter((s) => s.href.startsWith("http")).map((s) => s.href),
   alumniOf: education.map((e) => ({ "@type": "EducationalOrganization", name: e.school })),
-  knowsAbout: ["Data Science", "Machine Learning", "Python", "Pandas", "NumPy", "Scikit-learn", "NLP", "Retrieval-Augmented Generation", "Streamlit", "Django", "Flask"],
+  knowsAbout: ["Data Science", "Machine Learning", "Python", "Pandas", "NumPy", "Scikit-learn", "NLP", "Retrieval-Augmented Generation", "Streamlit", "MLOps", "Docker", "Flask"],
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
